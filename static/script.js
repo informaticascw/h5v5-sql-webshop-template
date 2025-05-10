@@ -30,11 +30,16 @@ async function loadFilters() {
 
     // Set the generated HTML to the productFilters container
     productFilters.innerHTML = filtersHTML;
+    // Do not show filter section when there are no filters
+    if (Object.entries(data.filters).length === 0) {
+      document.getElementById('filter-section').style.display = 'none'
+    }
   } catch (error) {
     console.error('Error loading filters:', error);
     const productFilters = document.getElementById('product-filters');
     productFilters.innerHTML = '<p class="error">Failed to load filters.</p>';
   }
+
 }
 
 // Apply filters and reload products

@@ -25,13 +25,15 @@ body {
 }
 
 #main-layout {
-  display: grid;
-  grid-template-columns: 1fr 3fr; /* Filters take 1/4th, products take 3/4th */
+  display: flex;
+  /* grid-template-columns: 250px 1fr; *//* filters get 250 pixels, products the remaining space */
   gap: 20px;
   margin: 20px 0px;
 }
 
 #filter-section {
+  width: 250px;        /* Fixed width */
+  flex-shrink: 0;      /* Prevent shrinking */
   background: white;
   padding: 20px;
 }
@@ -42,6 +44,7 @@ body {
 }
 
 #product-grid {
+  width: 100%;         /* Take all remaining space on the right side of filter*/
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
