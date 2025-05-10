@@ -10,16 +10,15 @@
 </head>
 
 <body onload="loadFilters(); loadFilteredProducts();">
-  <header id="header" class="box">
+  <header id="header-section">
     <h1>Stanislas Smurf Sjop</h1>
-    <hr>
   </header>
 
   <!-- Main Layout -->
   <div id="main-layout">
 
-    <!-- Filter Section, unvisible when there are no filters -->
-    <aside id="filter-section" class="box">
+    <!-- Filters, unvisible when there are no filters -->
+    <aside id="filter-section">
       <button onclick="loadFilteredProducts()">Filters toepassen</button>
       <div id="product-filters">
         <!-- Filters will be added here dynamically by loadFilters() -->
@@ -28,13 +27,13 @@
     </aside>
 
     <!-- Product Grid -->
-    <div id="product-grid">
+    <main id="product-grid">
       <!-- Products will be added here dynamically by loadFilteredProducts() -->
       <p class="loading">Loading products...</p>
-    </div>
+    </main>
   </div>
 
-  <section id="order-section" class="box">
+  <section id="order-section">
     <h2>Bestellen</h2>
     <p>Om een product te bestellen, smurf je een mailtje naar info@shop.nl.</p>
     <p>Zet in je mail</p>
@@ -51,8 +50,7 @@
     <p>Bedankt, geniet ervan!</p>
   </section>
 
-  <footer id="footer" class="box">
-    <hr>
+  <footer id="footer-section">
     <p>Deze webshop is een opdracht van het vak informatica</p>
   </footer>
 </body>

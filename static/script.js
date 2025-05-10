@@ -73,7 +73,7 @@ async function loadFilteredProducts() {
 
     // For each product, create a tile with its details
     for (var product of data.products) {
-      var content = '<div class="product-tile box">';
+      var content = '<article class="product-tile">';
 
       // Display product name
       content += '<h2>' + (product.name || 'Product') + '</h2>';
@@ -106,7 +106,7 @@ async function loadFilteredProducts() {
       if (product.price) {
         content += '<p><strong>Prijs:</strong> € ' + product.price.toFixed(2) + '</p>';
       }
-      content += '</div>';
+      content += '</article>';
       gridHTML += content;
     }
 
