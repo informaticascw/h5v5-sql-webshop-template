@@ -74,8 +74,8 @@ async function loadFilteredProducts() {
       content += '<h2>' + (product.name || 'Product') + '</h2>';
 
       // Display product image
-      var imgUrl = '/images/' + encodeURIComponent(product.id || '0') + '.png';
-      content += '<img src="' + imgUrl + '" alt="' + (product.name || '0') + '">';
+      var imgUrl = '/images/' + encodeURIComponent(product.image_link || 'noimage.png');
+      content += '<img src="' + imgUrl + '" alt="' + (product.name || 'noname') + '">';
 
       // For each product property, create a label and value
       for (var key in product) {

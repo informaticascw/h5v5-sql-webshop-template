@@ -30,6 +30,7 @@ def get_products(
         SELECT 
             p.id, 
             p.name, 
+            p.image_link,
             p.price, 
             b.name AS merk
         FROM products p
