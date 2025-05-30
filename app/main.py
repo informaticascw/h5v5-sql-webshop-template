@@ -85,11 +85,8 @@ def get_products(
     product_rows = db_connection.execute(query, params).fetchall()
     print("DEBUG: Query result (first 5 rows):", product_rows[:5])
 
-    # Add values for n:m property (e.g., colors)
-    result = []
+    # Add values for n:m property (e.g., colors) to products
     for product in product_rows:
-        product_id = product["id"]
-
         # Fetch colors for the product
         color_query = """
             SELECT col.name
@@ -97,21 +94,21 @@ def get_products(
             JOIN product_colors prodcol ON col.id = prodcol.color_id
             WHERE prodcol.product_id = ?
         """
+        param_product_id = product["id"]
         # Execute the query to fetch colors for the current product
         print("DEBUG: Query submitted:", color_query)
-        color_rows = db_connection.execute(color_query, (product_id,)).fetchall()
+        color_rows = db_connection.execute(color_query, (param_product_id,)).fetchall()
         print("DEBUG: Query result (first 5 rows):", color_rows[:5])
 
         # Add fetched colors to product
         colors = []
         for row in color_rows:
-            colors.append(row["name"])
+            colors += [row["name"]]
         product["kleur"] = colors
-        result.append(product)
 
     db_connection.close()
     print("DEBUG: Finished /api/products endpoint") 
-    return {"products": result}
+    return {"products": product_rows}
 
 # API endpoint to get all properties and values for filters
 @app.get("/api/filters")
