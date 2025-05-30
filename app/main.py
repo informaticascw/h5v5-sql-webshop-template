@@ -17,7 +17,12 @@ app = FastAPI()
 
 # Function to convert a row into a dictionary using field names as keys
 def dict_factory(cursor, row):
-    return {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
+    result = {}
+    for i in range(len(cursor.description)):
+        column_name = cursor.description[i][0]
+        value = row[i]
+        result[column_name] = value
+    return result
 
 # API endpoint to get a list of products
 @app.get("/api/products")
