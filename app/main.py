@@ -27,6 +27,7 @@ def dict_factory(cursor, row):
 # API endpoint to get a list of products
 @app.get("/api/products")
 def get_products(
+    # declare all parameters that may be added to the query
     soort: list[str] = Query(default=[]),
     kleur: list[str] = Query(default=[])
 ):
