@@ -51,7 +51,7 @@ async function loadFilteredProducts() {
     const filterInputs = document.querySelectorAll('#product-filters input');
     filterInputs.forEach(input => {
       if (input.type === 'checkbox' && input.checked) {
-        // Add checkbox filters (e.g., brands, colors)
+        // Add checkbox filters (e.g., categories, colors)
         const [key] = input.id.replace('filter-', '').split('-');
         queryParams.append(key, input.value);
       }

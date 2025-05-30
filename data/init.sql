@@ -3,13 +3,13 @@
 -- sqlite3 products.db < init_db.sql
 
 -- Remove existing tables (for a restartable setup)
-DROP TABLE IF EXISTS brands;
+DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS colors;
 DROP TABLE IF EXISTS product_colors;
 
--- Create brands table
-CREATE TABLE brands (
+-- Create categories table
+CREATE TABLE categories (
     id INTEGER PRIMARY KEY,
     name TEXT
 );
@@ -19,9 +19,9 @@ CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,
     image_link TEXT,
-    brand_id INTEGER,
+    category_id INTEGER,
     price REAL,
-    FOREIGN KEY(brand_id) REFERENCES brands(id)
+    FOREIGN KEY(category_id) REFERENCES category(id)
 );
 
 -- Create colors table
@@ -38,20 +38,20 @@ CREATE TABLE product_colors (
     FOREIGN KEY(color_id) REFERENCES colors(id)
 );
 
--- Add brands
-INSERT INTO brands (id, name) VALUES
-    (1, 'Smurf Toys Inc.'),
-    (2, 'Smurf Mania');
+-- Add category
+INSERT INTO categories (id, name) VALUES
+    (1, 'Poppetje'),
+    (2, 'Huisje');
 
 -- Add products
-INSERT INTO products (id, name, image_link, brand_id, price) VALUES
+INSERT INTO products (id, name, image_link, category_id, price) VALUES
     (1, 'Muzieksmurf', 'muzieksmurf.png', 1, 29.99),
-    (2, 'Knutselsmurf', 'knutselsmurf.png', 2, 14.95),
+    (2, 'Knutselsmurf', 'knutselsmurf.png', 1, 14.95),
     (3, 'Smurfin', 'smurfin.png', 1, 9.50),
     (4, 'Grote smurf', 'grotesmurf.png', 1, 10.50),
-    (5, 'Klein huis', 'huis.png', 1, 15.50),
-    (6, 'Paars huis', 'paarshuis.png', 1, 15.50),
-    (7, 'Groot huis', 'hooghuis.png', 1, 15.50);
+    (5, 'Klein huis', 'huis.png', 2, 15.50),
+    (6, 'Paars huis', 'paarshuis.png', 2, 15.50),
+    (7, 'Groot huis', 'hooghuis.png', 2, 15.50);
 
 -- Add colors
 INSERT INTO colors (id, name) VALUES
