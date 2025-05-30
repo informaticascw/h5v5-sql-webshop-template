@@ -72,12 +72,12 @@ def get_products(
     params = category_params + color_params
     filters = category_filters + color_filters
     if len(filters) > 0:
-        query += " WHERE " + filters[0]
+        query = query + " WHERE " + filters[0]
         for i in range(1, len(filters)):
-            query += " AND " + filters[i]
+            query = query + " AND " + filters[i]
 
     # Add GROUP BY to ensure each product appears only once
-    query += " GROUP BY prod.id"
+    query = query + " GROUP BY prod.id"
 
     # Execute the query
     print("DEBUG: Query submitted:", query)
@@ -103,7 +103,7 @@ def get_products(
         # Add fetched colors to product
         colors = []
         for row in color_rows:
-            colors += [row["name"]]
+            colors.append(row["name"])
         product["kleur"] = colors
 
     db_connection.close()
