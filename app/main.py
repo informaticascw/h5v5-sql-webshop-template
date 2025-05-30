@@ -1,5 +1,6 @@
+#
 # This is a simple FastAPI application that serves a static HTML site and provides API endpoints:
-
+#
 # source for base code https://chatgpt.com/share/67f1905a-73b0-8012-ae39-f105fcf0efc4
 # extended using copilot
 
@@ -10,7 +11,11 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# Function to convert rows into dictionaries
+#
+# serve API endpoints like /api/products
+#
+
+# Function to convert a row into a dictionary using field names as keys
 def dict_factory(cursor, row):
     return {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
 
@@ -23,7 +28,7 @@ def get_products(
     print("DEBUG: Starting /api/products endpoint")
     print("DEBUG: Parameters - soort:", soort, ", kleur:", kleur)
     db_connection = sqlite3.connect("data/products.db")
-    db_connection.row_factory = dict_factory  # Convert rows into dictionaries
+    db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
     # Build the base query
     query = """
@@ -38,24 +43,32 @@ def get_products(
         LEFT JOIN product_colors prodcol ON prod.id = prodcol.product_id
         LEFT JOIN colors col ON prodcol.color_id = col.id
     """
-    filters = []
-    params = []
 
-    # Add filter for category
-    if soort:
-        placeholders = ", ".join(["?"] * len(soort))
-        filters.append("cat.name IN (" + placeholders + ")")
-        params.extend(soort)
+    # Filter soort (category in database)
+    category_params = soort
+    category_filters = []
+    if len(category_params) > 0:
+        placeholders = "?"
+        for i in range(1, len(category_params)):
+            placeholders = placeholders + ", ?"
+        category_filters = ["cat.name IN (" + placeholders + ")"]
 
-    # Add filter for colors
-    if kleur:
-        placeholders = ", ".join(["?"] * len(kleur))
-        filters.append("col.name IN (" + placeholders + ")")
-        params.extend(kleur)
+    # Filter kleur (color in database)
+    color_params = kleur
+    color_filters = []
+    if len(color_params) > 0:
+        placeholders = "?"
+        for i in range(1, len(color_params)):
+            placeholders = placeholders + ", ?"
+        color_filters = ["col.name IN (" + placeholders + ")"]
 
-    # Append WHERE clause if there are filters
-    if filters:
-        query += " WHERE " + " AND ".join(filters)
+    # Add WHERE with filters to query
+    params = category_params + color_params
+    filters = category_filters + color_filters
+    if len(filters) > 0:
+        query += " WHERE " + filters[0]
+        for i in range(1, len(filters)):
+            query += " AND " + filters[i]
 
     # Add GROUP BY to ensure each product appears only once
     query += " GROUP BY prod.id"
@@ -100,7 +113,7 @@ def get_filters():
     print("DEBUG: Starting /api/filters endpoint")  
 
     db_connection = sqlite3.connect("data/products.db")
-    db_connection.row_factory = dict_factory  # Use dict_factory for query results
+    db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
     # Fetch all distinct categories
     categories_query = "SELECT name FROM categories"
@@ -126,8 +139,9 @@ def get_filters():
     print("DEBUG: Finished /api/filters endpoint")  
     return {"filters": filters}
 
-
+#
 # Serve static files like index.html, script.js, etc.
+#
 
 # Do not cache static files, handy for development
 class NoCacheStaticFiles(StaticFiles):
@@ -143,7 +157,9 @@ class NoCacheStaticFiles(StaticFiles):
 # Endpoint to serve static files
 app.mount("/", NoCacheStaticFiles(directory="static", html=True), name="static")
 
+#
 # Start server
+#
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app)
