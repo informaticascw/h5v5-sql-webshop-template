@@ -84,7 +84,7 @@ async function loadFilteredProducts() {
 
       // For each product property, create a label and value
       for (var key in product) {
-        if (key === 'name' || key === 'image_link' || key === 'id' || key === 'price') continue; // Skip name, image_link, id and price
+        if (['name', 'image_link', 'id', 'price', 'dummy'].includes(key)) continue; // Skip name, image_link, id, price and dummy
 
         // Format the label (e.g., 'product_name' -> 'Product Name')
         var label = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
