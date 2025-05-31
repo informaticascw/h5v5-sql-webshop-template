@@ -2,6 +2,9 @@
 -- create database from command line:
 -- bash start.sh
 
+--
+-- create tables
+--
 
 -- Create categories table
 DROP TABLE IF EXISTS categories;
@@ -36,6 +39,10 @@ CREATE TABLE product_colors (
     FOREIGN KEY(product_id) REFERENCES products(id),
     FOREIGN KEY(color_id) REFERENCES colors(id)
 );
+
+--
+-- populate tables with data
+--
 
 -- Add category
 INSERT INTO categories (id, name) VALUES
