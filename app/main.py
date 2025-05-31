@@ -31,8 +31,8 @@ def get_products(
     soort: list[str] = Query(default=[]),
     kleur: list[str] = Query(default=[])
 ):
-    print("DEBUG: Starting /api/products endpoint")
-    print("DEBUG: Parameters - soort:", soort, ", kleur:", kleur)
+    print("API: Starting /api/products endpoint")
+    print("API: Parameters - soort:", soort, ", kleur:", kleur)
     db_connection = sqlite3.connect("data/products.db")
     db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
@@ -80,10 +80,10 @@ def get_products(
     query = query + " GROUP BY prod.id"
 
     # Execute the query
-    print("DEBUG: Query submitted:", query)
-    print("DEBUG: Query parameters:", params)
+    print("API: Query submitted:", query)
+    print("API: Query parameters:", params)
     product_rows = db_connection.execute(query, params).fetchall()
-    print("DEBUG: Query result (first 3 rows):", product_rows[:3])
+    print("API: Query result (first 3 rows):", product_rows[:3])
 
     # Add values for n:m property (e.g., colors) to products
     for product in product_rows:
@@ -96,9 +96,9 @@ def get_products(
         """
         param_product_id = product["id"]
         # Execute the query to fetch colors for the current product
-        print("DEBUG: Query submitted:", color_query)
+        print("API: Query submitted:", color_query)
         color_rows = db_connection.execute(color_query, (param_product_id,)).fetchall()
-        print("DEBUG: Query result (first 3 rows):", color_rows[:3])
+        print("API: Query result (first 3 rows):", color_rows[:3])
 
         # Add fetched colors to product
         colors = []
@@ -107,29 +107,29 @@ def get_products(
         product["kleur"] = colors
 
     db_connection.close()
-    print("DEBUG: Finished /api/products endpoint") 
+    print("API: Finished /api/products endpoint") 
     return {"products": product_rows}
 
 # API endpoint to get all properties and values for filters
 @app.get("/api/filters")
 def get_filters():
-    print("DEBUG: Starting /api/filters endpoint")  
+    print("API: Starting /api/filters endpoint")  
 
     db_connection = sqlite3.connect("data/products.db")
     db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
     # Fetch all distinct categories
     categories_query = "SELECT name FROM categories"
-    print("DEBUG: Query submitted:", categories_query)  
+    print("API: Query submitted:", categories_query)  
     categories_result = db_connection.execute(categories_query).fetchall()
-    print("DEBUG: Query result (first 3 rows):", categories_result[:3])  
+    print("API: Query result (first 3 rows):", categories_result[:3])  
     categories = [row["name"] for row in categories_result]
 
     # Fetch all distinct colors
     colors_query = "SELECT name FROM colors"
-    print("DEBUG: Query submitted:", colors_query)  
+    print("API: Query submitted:", colors_query)  
     colors_result = db_connection.execute(colors_query).fetchall()
-    print("DEBUG: Query result (first 3 rows):", colors_result[:3])  
+    print("API: Query result (first 3 rows):", colors_result[:3])  
     colors = [row["name"] for row in colors_result]
 
     # Construct the response
@@ -139,7 +139,7 @@ def get_filters():
     }
 
     db_connection.close()
-    print("DEBUG: Finished /api/filters endpoint")  
+    print("API: Finished /api/filters endpoint")  
     return {"filters": filters}
 
 #
