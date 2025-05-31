@@ -83,7 +83,7 @@ def get_products(
     print("DEBUG: Query submitted:", query)
     print("DEBUG: Query parameters:", params)
     product_rows = db_connection.execute(query, params).fetchall()
-    print("DEBUG: Query result (first 5 rows):", product_rows[:5])
+    print("DEBUG: Query result (first 3 rows):", product_rows[:3])
 
     # Add values for n:m property (e.g., colors) to products
     for product in product_rows:
@@ -98,7 +98,7 @@ def get_products(
         # Execute the query to fetch colors for the current product
         print("DEBUG: Query submitted:", color_query)
         color_rows = db_connection.execute(color_query, (param_product_id,)).fetchall()
-        print("DEBUG: Query result (first 5 rows):", color_rows[:5])
+        print("DEBUG: Query result (first 3 rows):", color_rows[:3])
 
         # Add fetched colors to product
         colors = []
@@ -122,14 +122,14 @@ def get_filters():
     categories_query = "SELECT name FROM categories"
     print("DEBUG: Query submitted:", categories_query)  
     categories_result = db_connection.execute(categories_query).fetchall()
-    print("DEBUG: Query result (first 5 rows):", categories_result[:5])  
+    print("DEBUG: Query result (first 3 rows):", categories_result[:3])  
     categories = [row["name"] for row in categories_result]
 
     # Fetch all distinct colors
     colors_query = "SELECT name FROM colors"
     print("DEBUG: Query submitted:", colors_query)  
     colors_result = db_connection.execute(colors_query).fetchall()
-    print("DEBUG: Query result (first 5 rows):", colors_result[:5])  
+    print("DEBUG: Query result (first 3 rows):", colors_result[:3])  
     colors = [row["name"] for row in colors_result]
 
     # Construct the response
