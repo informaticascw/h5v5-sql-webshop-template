@@ -1,20 +1,17 @@
 -- source: https://chatgpt.com/share/67f1905a-73b0-8012-ae39-f105fcf0efc4
 -- create database from command line:
--- sqlite3 products.db < init_db.sql
+-- bash start.sh
 
--- Remove existing tables (for a restartable setup)
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS colors;
-DROP TABLE IF EXISTS product_colors;
 
 -- Create categories table
+DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
     id INTEGER PRIMARY KEY,
     name TEXT
 );
 
 -- Create products table
+DROP TABLE IF EXISTS products;
 CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,
@@ -25,12 +22,14 @@ CREATE TABLE products (
 );
 
 -- Create colors table
+DROP TABLE IF EXISTS colors;
 CREATE TABLE colors (
     id INTEGER PRIMARY KEY,
     name TEXT
 );
 
 -- Create join table for N:M relationship
+DROP TABLE IF EXISTS product_colors;
 CREATE TABLE product_colors (
     product_id INTEGER,
     color_id INTEGER,
