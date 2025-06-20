@@ -3,8 +3,7 @@
 {
 	"name": "webshop",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// Or use "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
-	"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+	"image": "mcr.microsoft.com/devcontainers/universal:latest",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// Install python libraries after the container is created.
 	"postCreateCommand": "pip3 install fastapi uvicorn",
