@@ -23,8 +23,16 @@ sqlite3 data/products.db < data/init.sql
 
 echo "✅ Database ready"
 
+# 🧪 Check if FastAPI is installed
+echo "🔍 Checking for FastAPI..."
+if ! python3 -c "import fastapi" &> /dev/null; then
+    echo "⚠️ FastAPI is not installed. Please install it with: pip install fastapi"
+    exit 1
+else
+    echo "✅ FastAPI is installed."
+fi
+
 echo "🚀 Starting FastAPI backend (using python)..."
 
 # Start FastAPI server using python, requires uvicorn.run() in main.py
 python app/main.py
-
