@@ -39,15 +39,15 @@ def get_products(
     # Build the base query
     query = """
         SELECT 
-            prod.id, 
-            prod.name, 
-            prod.image_link,
-            prod.price, 
-            cat.name AS soort
-        FROM products prod
-        LEFT JOIN categories cat ON prod.category_id = cat.id
-        LEFT JOIN product_color prodcol ON prod.id = prodcol.product_id
-        LEFT JOIN colors col ON prodcol.color_id = col.id
+            products.id, 
+            products.name, 
+            products.image_link,
+            products.price, 
+            categories.name AS soort
+        FROM products
+        LEFT JOIN categories ON products.category_id = categories.id
+        LEFT JOIN product_color ON products.id = product_color.product_id
+        LEFT JOIN colors ON product_color.color_id = colors.id
     """
 
     # Filter soort (category in database)
@@ -57,7 +57,7 @@ def get_products(
         placeholders = "?"
         for i in range(1, len(category_params)):
             placeholders = placeholders + ", ?"
-        category_filters = ["cat.name IN (" + placeholders + ")"]
+        category_filters = ["categories.name IN (" + placeholders + ")"]
 
     # Filter kleur (color in database)
     color_params = kleur
@@ -66,7 +66,7 @@ def get_products(
         placeholders = "?"
         for i in range(1, len(color_params)):
             placeholders = placeholders + ", ?"
-        color_filters = ["col.name IN (" + placeholders + ")"]
+        color_filters = ["colors.name IN (" + placeholders + ")"]
 
     # Add WHERE with filters to query
     params = category_params + color_params
@@ -77,7 +77,7 @@ def get_products(
             query = query + " AND " + filters[i]
 
     # Add GROUP BY to ensure each product appears only once
-    query = query + " GROUP BY prod.id"
+    query = query + " GROUP BY products.id"
 
     # Execute the query
     print("API: Query submitted:", query)
@@ -89,10 +89,10 @@ def get_products(
     for product in product_rows:
         # Fetch colors for the product
         color_query = """
-            SELECT col.name
-            FROM colors col
-            JOIN product_color prodcol ON col.id = prodcol.color_id
-            WHERE prodcol.product_id = ?
+            SELECT colors.name
+            FROM colors
+            JOIN product_color ON colors.id = product_color.color_id
+            WHERE product_color.product_id = ?
         """
         param_product_id = product["id"]
         # Execute the query to fetch colors for the current product
@@ -146,7 +146,7 @@ def get_filters():
 # Serve static files like index.html, script.js, etc.
 #
 
-# Do not cache static files, handy for development
+# Do not cache static files, handy for development but it slows down loading the webpage
 class NoCacheStaticFiles(StaticFiles):
     async def get_response(self, path, scope):
         response = await super().get_response(path, scope)
