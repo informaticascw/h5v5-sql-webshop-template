@@ -14,39 +14,7 @@ Start de webshop in de terminal van de Codespace met het commando
 bash start.sh
 ```
 
-# Wat kan onze webshop
-Wat heeft de webshop wel:
-- Artikelen tonen
-- Filteren van artikelen
-- Zeer basic bestelproces (mailen wat je wilt kopen)
-
-Wat heeft de webshop niet:
-- Een winkelmand functie 
-<br>(in plaats daarvan stuurt de klant een mailtje)
-- Betaal functie 
-<br>(in plaats daarvan stuurt webshop eigenaar een Tikkie)
-- Inlog functie 
-<br>(we schrijven niet in de database, dus dit is niet nodig) 
-- Webpagina voor beheerder 
-<br>(je moet de producten in je webshop aanpassen met sql opdrachten en dan de webshop herstarten)
-- Voorraad en klantgegevens bijhouden
-
-Hosting:
-
-Onze webshop draait in een devcontainer op Codespaces. Dat betekent dat de webshop uitgaat als jij je browser afsluit. Je hebt een server nodig om je webshop permanent beschikbaar te maken, dat kost meestal een klein bedrag per maand en het vraagt wat technische handigheid om de webshop op de server te installeren.
-
-# Basis uitleg hoe de webshop werkt
-The basic idea is that a webpage of the shop is loaded by the browser and information on the articles in the shop are added to that depending on what the user selects.
-
-1. You open a browser and navigate to the webshop. 
-2. The browser downloads the html and css files from the server. It also downloads a piece of javascript code.
-3. The javascript code is being executed by the browser. The javascript code connects to a link on the server that is connected to the api. This is called a REST-interface. Through the REST interface, the javascript code in the browser request information on the articles it needs to display.
-4. The api is a programm on the server which connects to the database. It requests information from the database and sends it back to the browser. The result is sent in json-format.
-5. The javascript programm in the browser looks at the json-file and adds elements containing articels in the shop to the DOM. The DOM is the model of the html files that the browser keeps in it memory and shows to the user. These elements added are displayed by the browser.
-
-An alternative approach would be to have the server build complete web-pages including all information on articles. This is the idea behind the php programming language. The REST-interface is gaining popularity. An advantage of REST above php is that REST allows for more responsive (interfactive) websites.
-
-# Uitleg hoe je de webshop kunt aanpassen 
+# Tips hoe je de webshop kunt aanpassen 
 
 ## Server opnieuw starten
 Gebruik het terminal window van Gitpod of Codespaces.<br>
