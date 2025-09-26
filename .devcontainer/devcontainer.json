@@ -11,7 +11,7 @@
 	"portsAttributes": {
 		"8000": {
 			"label": "Webshop",
-			"onAutoForward": "openBrowser"
+			"onAutoForward": "notify" // openBrowser is blocked by many browsers
 		}
 	},
 	// Configure tool-specific properties.

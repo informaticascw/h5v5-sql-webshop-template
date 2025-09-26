@@ -9,30 +9,35 @@ async function loadFilters() {
     let filtersHTML = '';
 
     // Iterate over all filter properties returned by the API
-    for (const [key, value] of Object.entries(data.filters)) {
+    var filterKeys = Object.keys(data.filters);
+    for (var i = 0; i < filterKeys.length; i++) {
+      var filterKey = filterKeys[i];           // e.g. "color"
+      var filterValues = data.filters[filterKey]; // e.g. ["red", "green"]
+
       // Create a section for each filter
       filtersHTML += `<div class="filter-container">`;
-      filtersHTML += `<h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>`;
+      filtersHTML += `<h3>${filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}</h3>`;
 
       // Add checkboxes for each filter option
-      if (Array.isArray(value)) {
-        value.forEach(option => {
-          const checkboxId = `filter-${key}-${option}`;
-          filtersHTML += `
-            <input type="checkbox" id="${checkboxId}" value="${option}">
-            <label for="${checkboxId}">${option}</label><br>
+      //if (Array.isArray(filterValue)) {
+      for (var j = 0; j < filterValues.length; j++) {
+        const filterValue = filterValues[j];
+        const checkboxId = `filter-${filterKey}-${filterValue}`;
+        filtersHTML += `
+            <input type="checkbox" id="${checkboxId}" value="${filterValue}">
+            <label for="${checkboxId}">${filterValue}</label><br>
           `;
-        });
       }
 
       filtersHTML += `</div>`;
-    }
+      //}
 
-    // Set the generated HTML to the productFilters container
-    productFilters.innerHTML = filtersHTML;
-    // Do not show filter section when there are no filters
-    if (Object.entries(data.filters).length === 0) {
-      document.getElementById('filter-section').style.display = 'none'
+      // Set the generated HTML to the productFilters container
+      productFilters.innerHTML = filtersHTML;
+      // Do not show filter section when there are no filters
+      if (Object.entries(data.filters).length === 0) {
+        document.getElementById('filter-section').style.display = 'none'
+      }
     }
   } catch (error) {
     console.error('Error loading filters:', error);
@@ -49,13 +54,14 @@ async function loadFilteredProducts() {
 
     // Get all filter inputs
     const filterInputs = document.querySelectorAll('#product-filters input');
-    filterInputs.forEach(input => {
+    for (var i = 0; i < filterInputs.length; i++) {
+      var input = filterInputs[i];
       if (input.type === 'checkbox' && input.checked) {
         // Add checkbox filters (e.g., categories, colors)
-        const [key] = input.id.replace('filter-', '').split('-');
+        var key = input.id.replace('filter-', '').split('-')[0];
         queryParams.append(key, input.value);
       }
-    });
+    }
 
     // Load products with applied filters
     console.log('DEBUG: Applied filters:', queryParams.toString());
