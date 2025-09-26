@@ -98,9 +98,6 @@ Op sommige scholen blokkeert de firewall het gebruik van Codespaces. Dit is een 
 # Documentatie 
 * Video over de werking van RESTful API's<br>
 https://www.youtube.com/watch?v=-mN3VyJuCjM
-
-
-
 * tutorial building a REST-api with postgressDB + jsnode + jsexpress<br>
 https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
 * serving static files with jsexpress<br>
@@ -109,22 +106,12 @@ https://expressjs.com/en/starter/static-files.html
 https://www.w3schools.com
 * basic sql course<br>
 https://www.khanacademy.org/computing/computer-programming/sql
-* sqlite3 gebruiken op in Shell<br>
+* sqlite3 gebruiken in de terminal<br>
 https://www.sqlite.org/cli.html
 * better-sqlite library gebruiken in nodejs (javascript)<br>
 https://github.com/JoshuaWise/better-sqlite3/blob/HEAD/docs/api.md
-* shoppping basket lokaal opslaan<br>
-google op local storage javascript basket
-* bestelling mailen<br>
-video met gebruik van nodemailer (module in javascript) vind je hier: https://youtu.be/Va9UKGs1bwI
-* replit online editor en hosting ontwikkelomgeving<br>
-https://docs.replit.com/
-* gitpod online editor en hosting ontwikkelomgeving<br>
-https://www.gitpod.io/docs/
 * introduction to docker (kennis alleen nodig als je de repo heftig wilt aanpassen)<br>
 https://docker-curriculum.com
-* yarn (kennis alleen nodig als je de repo heftig wilt aanpassen)<br>
-https://yarnpkg.com/getting-started
 
 # Credits
 - avs123a<br>
