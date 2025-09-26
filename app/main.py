@@ -46,7 +46,7 @@ def get_products(
             cat.name AS soort
         FROM products prod
         LEFT JOIN categories cat ON prod.category_id = cat.id
-        LEFT JOIN product_colors prodcol ON prod.id = prodcol.product_id
+        LEFT JOIN product_color prodcol ON prod.id = prodcol.product_id
         LEFT JOIN colors col ON prodcol.color_id = col.id
     """
 
@@ -91,7 +91,7 @@ def get_products(
         color_query = """
             SELECT col.name
             FROM colors col
-            JOIN product_colors prodcol ON col.id = prodcol.color_id
+            JOIN product_color prodcol ON col.id = prodcol.color_id
             WHERE prodcol.product_id = ?
         """
         param_product_id = product["id"]

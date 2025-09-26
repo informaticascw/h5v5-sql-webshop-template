@@ -32,8 +32,8 @@ CREATE TABLE colors (
 );
 
 -- Create join table for N:M relationship
-DROP TABLE IF EXISTS product_colors;
-CREATE TABLE product_colors (
+DROP TABLE IF EXISTS product_color;
+CREATE TABLE product_color (
     product_id INTEGER,
     color_id INTEGER,
     FOREIGN KEY(product_id) REFERENCES products(id),
@@ -71,7 +71,7 @@ INSERT INTO colors (id, name) VALUES
     (8, 'Paars');
 
 -- Link products to colors
-INSERT INTO product_colors (product_id, color_id) VALUES
+INSERT INTO product_color (product_id, color_id) VALUES
     (1, 1), (1, 2), (1, 5),
     (2, 1), (2, 2), (2, 3), (2, 6),
     (3, 4), (3, 1), (3, 2),
