@@ -19,8 +19,9 @@ CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,
     image_link TEXT,
-    category_id INTEGER,
+    beschrijving TEXT,
     price REAL,
+    category_id INTEGER,
     FOREIGN KEY(category_id) REFERENCES category(id)
 );
 
@@ -50,14 +51,14 @@ INSERT INTO categories (id, name) VALUES
     (2, 'Huisje');
 
 -- Add products
-INSERT INTO products (id, name, image_link, category_id, price) VALUES
-    (1, 'Muzieksmurf', 'muzieksmurf.png', 1, 29.99),
-    (2, 'Knutselsmurf', 'knutselsmurf.png', 1, 14.95),
-    (3, 'Smurfin', 'smurfin.png', 1, 9.50),
-    (4, 'Grote smurf', 'grotesmurf.png', 1, 10.50),
-    (5, 'Klein huis', 'huis.png', 2, 15.50),
-    (6, 'Paars huis', 'paarshuis.png', 2, 15.50),
-    (7, 'Groot huis', 'hooghuis.png', 2, 15.50);
+INSERT INTO products (id, name, image_link, beschrijving, category_id, price) VALUES
+    (1, 'Muzieksmurf', 'muzieksmurf.png', 'Deze smurf speelt de hele dag smurfenliedjes.', 1, 29.99),
+    (2, 'Knutselsmurf', 'knutselsmurf.png', 'Deze smurf fixt alles wat stuk is.', 1, 14.95),
+    (3, 'Smurfin', 'smurfin.png', 'Dit is de populairste smurf in het dorp.', 1, 9.50),
+    (4, 'Grote smurf', 'grotesmurf.png', 'Als de smurfen niet weten wat ze moeten doen, dan vragen ze het aan deze smurf.', 1, 10.50),
+    (5, 'Klein huis', 'huis.png', 'Een standaard smurfenhuis.', 2, 15.50),
+    (6, 'Paars huis', 'paarshuis.png', 'Een smurfenhuis met een paars dak.', 2, 15.50),
+    (7, 'Groot huis', 'hooghuis.png', 'Een smurfenhuis met twee etages.', 2, 15.50);
 
 -- Add colors
 INSERT INTO colors (id, name) VALUES

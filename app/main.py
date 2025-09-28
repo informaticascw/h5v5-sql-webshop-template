@@ -41,6 +41,7 @@ def get_products(
         SELECT 
             products.id, 
             products.name, 
+            products.beschrijving, 
             products.image_link,
             products.price, 
             categories.name AS soort
