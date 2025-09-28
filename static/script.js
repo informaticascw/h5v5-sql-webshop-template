@@ -57,7 +57,7 @@ async function loadFilteredProducts() {
     for (var i = 0; i < filterInputs.length; i++) {
       var input = filterInputs[i];
       if (input.type === 'checkbox' && input.checked) {
-        // Add checkbox filters (e.g., categories, colors)
+        // Add checkbox filters (e.g., brands, colors)
         var key = input.id.replace('filter-', '').split('-')[0];
         queryParams.append(key, input.value);
       }

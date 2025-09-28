@@ -28,11 +28,11 @@ def dict_factory(cursor, row):
 @app.get("/api/products")
 def get_products(
     # declare all parameters that may be added to the query
-    soort: list[str] = Query(default=[]),
+    merk: list[str] = Query(default=[]),
     kleur: list[str] = Query(default=[])
 ):
     print("API: Starting /api/products endpoint")
-    print("API: Parameters - soort:", soort, ", kleur:", kleur)
+    print("API: Parameters - merk:", merk, ", kleur:", kleur)
     db_connection = sqlite3.connect("data/products.db")
     db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
@@ -44,9 +44,9 @@ def get_products(
             products.beschrijving, 
             products.image_link,
             products.price, 
-            categories.name AS soort
+            brands.name AS merk
         FROM products
-        LEFT JOIN categories ON products.category_id = categories.id
+        LEFT JOIN brands ON products.brand_id = brands.id
         LEFT JOIN product_color ON products.id = product_color.product_id
         LEFT JOIN colors ON product_color.color_id = colors.id
     """
@@ -57,14 +57,14 @@ def get_products(
     # """
 
 
-    # Filter soort (category in database)
-    category_params = soort
-    category_filters = []
-    if len(category_params) > 0:
+    # Filter merk (brand in database)
+    brand_params = merk
+    brand_filters = []
+    if len(brand_params) > 0:
         placeholders = "?"
-        for i in range(1, len(category_params)):
+        for i in range(1, len(brand_params)):
             placeholders = placeholders + ", ?"
-        category_filters = ["categories.name IN (" + placeholders + ")"]
+        brand_filters = ["brands.name IN (" + placeholders + ")"]
 
     # Filter kleur (color in database)
     color_params = kleur
@@ -76,8 +76,8 @@ def get_products(
         color_filters = ["colors.name IN (" + placeholders + ")"]
 
     # Add WHERE with filters to query
-    params = category_params + color_params
-    filters = category_filters + color_filters
+    params = brand_params + color_params
+    filters = brand_filters + color_filters
     if len(filters) > 0:
         query = query + " WHERE " + filters[0]
         for i in range(1, len(filters)):
@@ -125,12 +125,12 @@ def get_filters():
     db_connection = sqlite3.connect("data/products.db")
     db_connection.row_factory = dict_factory  # Convert each row into a dictionary
 
-    # Fetch all distinct categories
-    categories_query = "SELECT name FROM categories"
-    print("API: Query submitted:", categories_query)  
-    categories_result = db_connection.execute(categories_query).fetchall()
-    print("API: Query result (first 3 rows):", categories_result[:3])  
-    categories = [row["name"] for row in categories_result]
+    # Fetch all distinct brands
+    brands_query = "SELECT name FROM brands"
+    print("API: Query submitted:", brands_query)  
+    brands_result = db_connection.execute(brands_query).fetchall()
+    print("API: Query result (first 3 rows):", brands_result[:3])  
+    brands = [row["name"] for row in brands_result]
 
     # Fetch all distinct colors
     colors_query = "SELECT name FROM colors"
@@ -141,7 +141,7 @@ def get_filters():
 
     # Construct the response
     filters = {
-        "soort": categories,
+        "merk": brands,
         "kleur": colors
     }
 
