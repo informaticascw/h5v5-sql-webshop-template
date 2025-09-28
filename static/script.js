@@ -106,7 +106,6 @@ async function loadFilteredProducts() {
         } else {
           // Display label with a single value
           content += '<p><strong>' + label + ':</strong> ' + product[key] + '</p>';
-          console.log(`key:${key} value:${product[key]}`)
         }
       }
       // Display product price

@@ -50,6 +50,12 @@ def get_products(
         LEFT JOIN product_color ON products.id = product_color.product_id
         LEFT JOIN colors ON product_color.color_id = colors.id
     """
+    # startcode
+    # query = """
+    #     SELECT *
+    #     FROM products
+    # """
+
 
     # Filter soort (category in database)
     category_params = soort

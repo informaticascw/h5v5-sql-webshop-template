@@ -52,10 +52,10 @@ INSERT INTO categories (id, name) VALUES
 
 -- Add products
 INSERT INTO products (id, name, image_link, beschrijving, category_id, price) VALUES
-    (1, 'Muzieksmurf', 'muzieksmurf.png', 'Deze smurf speelt de hele dag smurfenliedjes.', 1, 29.99),
-    (2, 'Knutselsmurf', 'knutselsmurf.png', 'Deze smurf fixt alles wat stuk is.', 1, 14.95),
-    (3, 'Smurfin', 'smurfin.png', 'Dit is de populairste smurf in het dorp.', 1, 9.50),
-    (4, 'Grote smurf', 'grotesmurf.png', 'Als de smurfen niet weten wat ze moeten doen, dan vragen ze het aan deze smurf.', 1, 10.50),
+    (1, 'Smurfin', 'smurfin.png', 'Dit is de populairste smurf in het dorp.', 1, 9.50),
+    (2, 'Muzieksmurf', 'muzieksmurf.png', 'Deze smurf speelt de hele dag smurfenliedjes.', 1, 29.99),
+    (3, 'Grote smurf', 'grotesmurf.png', 'Als de smurfen niet weten wat ze moeten doen, dan vragen ze het aan deze smurf.', 1, 10.50),
+    (4, 'Knutselsmurf', 'knutselsmurf.png', 'Deze smurf fixt alles wat stuk is.', 1, 14.95),
     (5, 'Klein huis', 'huis.png', 'Een standaard smurfenhuis.', 2, 15.50),
     (6, 'Paars huis', 'paarshuis.png', 'Een smurfenhuis met een paars dak.', 2, 15.50),
     (7, 'Groot huis', 'hooghuis.png', 'Een smurfenhuis met twee etages.', 2, 15.50);
