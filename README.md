@@ -7,7 +7,7 @@ Meer info over deze opdracht op [https://stanislas.informatica.nu](https://stani
 
 ## Snel bekijken?
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/informaticascw/h5v5-sql-webshop-template?quickstart=1)
+Open een Codespace
 
 Start de webshop in de terminal van de Codespace met het commando 
 ```
