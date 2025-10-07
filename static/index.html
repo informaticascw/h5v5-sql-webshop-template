@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Webshop</title>
+  <script src="script.js" defer></script>
+</head>
+
+<body onload="loadFilters(); loadFilteredProducts();">
+  <header id="header-section">
+    <h1>Smurfsjop</h1>
+  </header>
+
+  <!-- Main Layout -->
+  <div id="main-layout">
+
+    <!-- Filters, unvisible when there are no filters -->
+    <aside id="filter-section">
+      <button onclick="loadFilteredProducts()">Filters toepassen</button>
+      <div id="product-filters">
+        <!-- Filters will be added here dynamically by loadFilters() -->
+        <p class="loading">Loading filters...</p>
+      </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <main id="product-grid">
+      <!-- Products will be added here dynamically by loadFilteredProducts() -->
+      <p class="loading">Loading products...</p>
+    </main>
+  </div>
+
+  <section id="order-section">
+    <h2>Bestellen</h2>
+    <p>Om een product te bestellen, smurf je een mailtje naar bestel@smufsjop.nl.</p>
+    <p>Zet in je mail</p>
+    <ul>
+      <li>De artikelen met het aantal dat je van elke artikel wilt bestellen.</li>
+      <li>Het adres waar je bestelling afgeleverd moet worden.</li>
+      <li>Je mobiele nummer.</li>
+    </ul>
+    <p>Nadat je besteld hebt</p>
+    <ul>
+      <li>Je ontvangt een Tikkie zodra wij je mail hebben gelezen.</li>
+      <li>Na betaling van het Tikkie versturen wij snel je bestelling.</li>
+      </ul>
+    <p>Bedankt, geniet ervan!</p>
+  </section>
+
+  <footer id="footer-section">
+    <p>Deze webshop is een opdracht van het vak informatica</p>
+  </footer>
+</body>
+
+</html>

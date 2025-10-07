@@ -1,0 +1,2 @@
+# skip SQLite database when committing
+/data/products.db

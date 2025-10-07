@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "webshop",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/universal:latest",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// Install python libraries after the container is created.
+	"postCreateCommand": "pip3 install fastapi uvicorn",
+	// Open the browser when the port is forwarded
+	"portsAttributes": {
+		"8000": {
+			"label": "Webshop",
+			"onAutoForward": "notify" // openBrowser is blocked by many browsers
+		}
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"extensions": [
+				"ms-vsliveshare.vsliveshare", // add google-docs like typing in same file, click on live-share button in left icon pane
+				"mhutchie.git-graph", // add graphical viewer for branches and commits, click on button in Source-Code tab
+				"ms-python.python" // add common functionallity for python (syntax checking, autocomplete, debugging etc)
+			]
+		}
+	}
+}
