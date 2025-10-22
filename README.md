@@ -3,13 +3,14 @@ Startcode voor het programmeren van een webshop met een html front end en python
 
 Deze repo is onderdeel van het vak informatica op het Stanislascollege Westplantsoen.
 
-Meer info over deze opdracht op [https://stanislas.informatica.nu](https://stanislas.informatica.nu/)
+Meer info over deze opdracht op<br>
+[https://stanislas.informatica.nu/webshop/](https://stanislas.informatica.nu/webshop/)
 
 ## Snel bekijken?
 
-Open een Codespace
+Open een codespace
 
-Start de webshop in de terminal van de Codespace met het commando 
+Start de webshop in de terminal van de codespace met het commando 
 ```
 bash start.sh
 ```
@@ -17,25 +18,24 @@ bash start.sh
 # Tips hoe je de webshop kunt aanpassen 
 
 ## Server opnieuw starten
-Gebruik het terminal window van Gitpod of Codespaces.<br>
+Gebruik het terminal window van je codespace.<br>
 Stop de server door typen van [CRTL]+[C].<br>
 Start de server met het volgene commando.<br>
 ```
 bash start.sh
 ```
-Om de server te (her)starten kun je ook de start knop gebruiken die je ziet als je op het "run en debug" icoon in de iconenbalk links op het scherm drukt.
 
 ## Wijzigingen aanbrengen in de database
-Wijzig de sql-commando's in het bestand db/create.sql<br>
+Wijzig de sql-commando's in het bestand `data/init.sql`<br>
 Start de server opnieuw (zie elders hoe dat moet) nadat de sql-commando's gewijzigd zijn. Zo zorg je ervoor dat de database opnieuw gemaakt wordt door de nieuwe sql-commando's uit te voeren.
 
 ## Fouten zoeken in de database
 Open de database in de terminal met het volgende commando
 ```
-sqlite3 db/my.db
+sqlite3 data/products.db
 ```
 Je kunt met SQL commanda's zien wat er in de database staat.<br>
-Bijvoorbeeld het commando: `SELECT * from Products;` (vergeet de ; aan het einde niet)
+Bijvoorbeeld het commando: `SELECT * from Products;` (vergeet de puntkomma aan het einde niet)
 
 Meer handige commando's:<br>
 - Een lijstje met tabellen `.tables`
@@ -43,18 +43,21 @@ Meer handige commando's:<br>
 - De eerste 3 rijen van de tabel products: `SELECT * FROM products LIMIT 3;`
 - sqlite3 afsluiten: `.quit`
 
+Alle commando's:<br>
+- https://www.sqlite.org/cli.html
+
 ## Fouten zoeken in de api
 Je kunt het antwoord van de api testen door achter de link naar je webshop /api/products te typen, bijvoorbeeld:<br>
-`https://....-8080.app.github.dev/api/products` (voor codespaces, pas aan voor jouw webshop-adres)
+`https://....-8000.app.github.dev/api/products`<br> (pas .... aan voor jouw webshop-adres)
 
-Bekijk de terminal van de server, daar kun je foutmeldingen zien.
+Bekijk de terminal van de server (dat is de terminal in je codespace), daar kun je foutmeldingen zien.
 Je kunt in de code in de map api opdrachten toevoegen die inhoud van variabelen afdrukken. Bijvoorbeeld:
 ```
-console.log("Waarde van i is ", i);
+print("Waarde van i is ", i);
 ```
 Start de server opnieuw (zie elders hoe dat moet) nadat de code gewijzigd is.
 
-## Fouten zoeken in de webpages
+## Fouten zoeken in de webpagina's op de client
 Bekijk de console in de browser, daar kun je foutmeldingen zien.<br>
 In Chrome open je de console in het menu -> Weergave -> Ontwikkelaar -> JavaScript-console. <br>
 Je kunt in de code op strategische plaatsen de volgende opdracht toevoegen:
@@ -68,15 +71,15 @@ console.log("Waarde van i is ", i);
 
 # Uitleg over bestanden en mappen
 
-## data folder
-Database with information on the arcticles in the shop. The commands in the init.sql file build te database. The database is build everytime start.sh is executed. 
+## app/
+`main.py` is het python programma dat de webserver voor de api en statische bestanden start.
 
-## static folder
-Static (non changing) html, css en js files. <br>
-Images of products are located in a subfolder
+## data/
+Database met informatie over de artikelen in de webshop. De commando's in het `init.sql`-bestand zetten de informatie in de database. De database database wordt elke keer dat `bash start.sh` wordt uitgevoerd opnieuw gemaakt.
 
-## app folder
-python file that starts webserver for static files and api.
+## static/
+.html, .css en .js-bestanden die door de browser van de bezoeker van je webshop geladen worden. Ze vormen het raamwerk van hoe je webshop eruit ziet.<br>
+In de submap `images/` staan plaatjes van je artikelen.
 
 ## start.sh
 Dit bestand bevat de commando's om de webshop (opnieuw) te starten. Je voert dit bestand uit in de terminal met het commando
@@ -84,34 +87,16 @@ Dit bestand bevat de commando's om de webshop (opnieuw) te starten. Je voert dit
 bash start.sh
 ```
 
-## .devcontainer 
-Mappen met de configuratie voor Codespaces
+## .devcontainer/
+Mappen met de configuratie voor codespaces
 
-## .vscode folder
-Map met de configuratie voor de editor VS Code die wordt gebruikt door Gitpod en Codespaces
+## .vscode/
+Map met de configuratie voor de editor VS Code die wordt gebruikt door codespaces
 
 # Vraag en antwoord
 
 ## Codespace meldt "Oh no, it looks like you're offline"
 Op sommige scholen blokkeert de firewall het gebruik van Codespaces. Dit is een instelling die alleen door de firewall beheerder kan worden aangepast. Tijdelijke oplossing: Verbind via een hotspot van je mobiel.
-
-# Documentatie 
-* Video over de werking van RESTful API's<br>
-https://www.youtube.com/watch?v=-mN3VyJuCjM
-* tutorial building a REST-api with postgressDB + jsnode + jsexpress<br>
-https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
-* serving static files with jsexpress<br>
-https://expressjs.com/en/starter/static-files.html
-* basic html & css & javascript reference<br>
-https://www.w3schools.com
-* basic sql course<br>
-https://www.khanacademy.org/computing/computer-programming/sql
-* sqlite3 gebruiken in de terminal<br>
-https://www.sqlite.org/cli.html
-* better-sqlite library gebruiken in nodejs (javascript)<br>
-https://github.com/JoshuaWise/better-sqlite3/blob/HEAD/docs/api.md
-* introduction to docker (kennis alleen nodig als je de repo heftig wilt aanpassen)<br>
-https://docker-curriculum.com
 
 # Credits
 - avs123a<br>
