@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "🔁 Stopping old server..."
 
 # Stop old server if it is running
