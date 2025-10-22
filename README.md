@@ -1,4 +1,4 @@
-#   h5v5-sql-webshop-template
+#  h5v5-sql-webshop-template
 Startcode voor het programmeren van een webshop met een html front end en python en database backend met rest api
 
 Deze repo is onderdeel van het vak informatica op het Stanislascollege Westplantsoen.
