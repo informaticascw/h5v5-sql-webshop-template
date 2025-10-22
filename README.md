@@ -1,11 +1,10 @@
-# h5v5-sql-webshop-template
+#   h5v5-sql-webshop-template
 Startcode voor het programmeren van een webshop met een html front end en python en database backend met rest api
 
 Deze repo is onderdeel van het vak informatica op het Stanislascollege Westplantsoen.
 
 Meer info over deze opdracht op<br>
 [https://stanislas.informatica.nu/webshop/](https://stanislas.informatica.nu/webshop/)
-
 
 ## Snel bekijken?
 
@@ -15,7 +14,6 @@ Start de webshop in de terminal van de codespace met het commando
 ```
 bash start.sh
 ```
-
 
 # Tips hoe je de webshop kunt aanpassen 
 
