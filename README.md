@@ -6,6 +6,7 @@ Deze repo is onderdeel van het vak informatica op het Stanislascollege Westplant
 Meer info over deze opdracht op<br>
 [https://stanislas.informatica.nu/webshop/](https://stanislas.informatica.nu/webshop/)
 
+
 ## Snel bekijken?
 
 Open een codespace
