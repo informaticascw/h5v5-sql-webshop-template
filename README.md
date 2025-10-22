@@ -15,6 +15,7 @@ Start de webshop in de terminal van de codespace met het commando
 bash start.sh
 ```
 
+
 # Tips hoe je de webshop kunt aanpassen 
 
 ## Server opnieuw starten
