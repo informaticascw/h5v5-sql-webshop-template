@@ -9,7 +9,7 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// pip3 install fastapi uvicorn => install packages for python
 	// "git config pull.rebase false", => needs to be configured before first pull or merge to prevent error
-	// "git config merge.ours.driver true", => configure git to use 'ours' merge strategy by default, this is not very git-like, but makes it easier voor studenten
+	// "git config merge.ours.driver true", => when local 'ours' file has changed, git will overwrite remote (theirs) changes in that file during pull and merge for all files stated in .gitattributes, this is not very git-like, but makes it easier voor studenten
 	// "git config --global merge.conflictStyle diff3" => show source between ours and theirs in merge conflicts
 	"postCreateCommand": "pip3 install fastapi uvicorn && git config pull.rebase false && git config merge.ours.driver true && git config --global merge.conflictStyle diff3", 
 	
