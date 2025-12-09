@@ -17,7 +17,7 @@ CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,
     image_link TEXT
-);
+) STRICT;
 
 --
 -- POPULATE TABLES WITH DATA
