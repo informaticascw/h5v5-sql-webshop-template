@@ -2,12 +2,17 @@
 -- create database from command line:
 -- bash start.sh
 
+
+-- BETTER ERROR CHECKING
+-- next line enables checking of values for keys
+PRAGMA foreign_keys = ON; 
+-- STRICT is added to each table for better error checking
+
 --
--- create tables
+-- CREATE TABLES
 --
 
 -- Create products table
-DROP TABLE IF EXISTS products;
 CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,
@@ -15,7 +20,7 @@ CREATE TABLE products (
 );
 
 --
--- populate tables with data
+-- POPULATE TABLES WITH DATA
 --
 
 -- Add products
