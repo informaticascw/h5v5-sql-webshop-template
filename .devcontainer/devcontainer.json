@@ -31,10 +31,10 @@
 				"ms-vsliveshare.vsliveshare", // add google-docs like typing in same file, click on live-share button in left icon pane
 				"mhutchie.git-graph", // add graphical viewer for branches and commits, click on button in Source-Code tab
 				"GitHub.copilot-chat", "GitHub.copilot" // finish Copilot setup
-			]
+			],
+    		"settings": { 
+				"locale": "en" // activate English userinterface
+			}
 		}
-	},
-    "settings": { 
-		"locale": "en" // activate English userinterface
 	}
 }
