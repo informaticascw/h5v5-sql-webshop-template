@@ -25,16 +25,12 @@
 		// Configure properties specific to VS Code.
 		"vscode": {
 			"extensions": [
-				"ms-vscode.vscode-loc-en", // load resources for English user interface
 				"ms-python.python", // add common functionallity for python (syntax checking, autocomplete, debugging etc)
 				"mathematic.vscode-pdf", // add viewer for pdf-files (this one supports vscode-web)
 				"ms-vsliveshare.vsliveshare", // add google-docs like typing in same file, click on live-share button in left icon pane
 				"mhutchie.git-graph", // add graphical viewer for branches and commits, click on button in Source-Code tab
 				"GitHub.copilot-chat", "GitHub.copilot" // finish Copilot setup
-			],
-    		"settings": { 
-				"locale": "en" // activate English userinterface
-			}
+			]
 		}
 	}
 }
